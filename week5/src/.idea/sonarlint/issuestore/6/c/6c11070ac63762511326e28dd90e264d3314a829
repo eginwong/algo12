@@ -1,0 +1,12 @@
+
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯ªÎÌ8ôÈ‹°›,
+Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8àó«à›,
+qsquid:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Úİ˜êüÿÿÿÿ8šÕäà›,
+bsquid:S1126"AReplace this if-then-else statement by a single return statement.(ÉÖëÿÿÿÿÿ8šÕäà›,
+]squid:S1126"AReplace this if-then-else statement by a single return statement.(ò±®ş8Éøá›,
+Ysquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ıÒ¨à›,
+lsquid:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÊÓàŞ8šÕäà›,
+]squid:S1126"AReplace this if-then-else statement by a single return statement.(òäøÉ8Éøá›,
+1squid:S1220""Move this file to a named package.
+qsquid:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Úİ˜êüÿÿÿÿ8šÕäà›,
+bsquid:S1126"AReplace this if-then-else statement by a single return statement.(å½‡Êıÿÿÿÿ8šÕäà›,

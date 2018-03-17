@@ -1,0 +1,11 @@
+
+?
+in/digraph1.txt,d/0/d0ed376ec11a17efb7ed4a27dd846f03a5457567
+<
+Outcast.java,4/3/437aa49df9a698f27608996f22619ce387701188
+8
+SAP.java,9/9/992dc770e835f26785af9ad8cf9003a6160b293e
+?
+in/synsets3.txt,d/5/d533b5ba2f6e5de90d618e27060b36520672d1d9
+<
+WordNet.java,1/2/125b63f55b3df4abc6e3ff8d803514632416777f
