@@ -1,0 +1,6 @@
+
+8squid:S1220""Move this file to a named package.8ΓΎξέ™,
+lsquid:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(β£γ8ΓΎξέ™,
+lsquid:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(Υαµ¨8ΓΎξέ™,
+;squid:S2097"Add a type test to this method.(Υαµ¨8ΓΎξέ™,
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(±Έ€8ΓΎξέ™,

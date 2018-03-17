@@ -1,0 +1,7 @@
+
+8squid:S1220""Move this file to a named package.8ÚĞµİ™,
+lsquid:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ò¼ø8³êµè™,
+_squid:UselessImportCheck"1Remove this unused import 'java.util.ArrayDeque'.(†®ŞÖúÿÿÿÿ8³êµè™,
+Usquid:UselessImportCheck",Remove this unused import 'java.util.Queue'.(Äá™ô8³êµè™,
+bsquid:S1126"AReplace this if-then-else statement by a single return statement.(»€‰úıÿÿÿÿ8Áµ³à™,
+ksquid:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(‹ÙÓ18èˆ·è™,
