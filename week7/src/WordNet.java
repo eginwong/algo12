@@ -6,10 +6,10 @@ import edu.princeton.cs.algs4.In;
 import java.util.HashMap;
 
 public class WordNet {
-    private static Digraph G;
-    private static SAP sap;
-    private static HashMap<String, Bag<Integer>> nounToIds;
-    private static HashMap<Integer, String> idSysnet;
+    private Digraph G;
+    private SAP sap;
+    private HashMap<String, Bag<Integer>> nounToIds;
+    private HashMap<Integer, String> idSysnet;
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {

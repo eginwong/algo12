@@ -2,7 +2,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Outcast {
-    private static WordNet local;
+    private WordNet local;
 
     public Outcast(WordNet wordnet) {
         local = wordnet;
