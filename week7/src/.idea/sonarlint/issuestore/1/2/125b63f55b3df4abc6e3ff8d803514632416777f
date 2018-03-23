@@ -1,10 +1,0 @@
-
-Ysquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Ù—é‘¢,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¼Ø»º8ñõ‘¢,
-dsquid:UselessImportCheck";Remove this unused import 'edu.princeton.cs.algs4.Point2D'.(µ€¥½8Ù—é‘¢,
-Xsquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ8Ù—é‘¢,
-usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(–Ñê‡8Ù—é‘¢,
-Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ù—é‘¢,
-hsquid:UselessImportCheck":Remove this unused import 'edu.princeton.cs.algs4.RectHV'.(Õ¦¨ùÿÿÿÿÿ8Ù—é‘¢,
-dsquid:UselessImportCheck";Remove this unused import 'edu.princeton.cs.algs4.StdDraw'.(ÊÄèÅ8Ù—é‘¢,
-8squid:S1220""Move this file to a named package.8Êóß¢,
