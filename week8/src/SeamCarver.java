@@ -1,6 +1,6 @@
 import edu.princeton.cs.algs4.Picture;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class SeamCarver {
     private static final double BORDER_ENERGY = 1000.0;
@@ -28,7 +28,8 @@ public class SeamCarver {
     }
 
     public Picture picture() {
-        return localCopy;
+        // defensive return
+        return new Picture(localCopy);
     }                     // current picture
 
     public int width() {
@@ -60,6 +61,7 @@ public class SeamCarver {
     public int[] findVerticalSeam() {
         // in case of transposition
         updateEnergy();
+        // make bigger than required in order to have virtual node
         double[][] distTo = new double[localCopy.width()][localCopy.height()];
         int[][] edgeTo = new int[localCopy.width()][localCopy.height()];
 
@@ -76,13 +78,14 @@ public class SeamCarver {
             distTo[x][0] = energyParty[x][0];
         }
 
-        // start relaxing
+        // start relaxing for each row
         for (int relaxY = 0; relaxY < localCopy.height(); relaxY++) {
+            // for each column
             for (int relaxX = 0; relaxX < localCopy.width(); relaxX++) {
                 //    start reaching vertices connected to me
                 if (relaxY < localCopy.height() - 1) {
 
-                    //straight down good
+                    // straight down good
                     // if next distance is greater than current, replace with current
                     double newEnergy = distTo[relaxX][relaxY] + energyParty[relaxX][relaxY + 1];
                     if (distTo[relaxX][relaxY + 1] > newEnergy) {
@@ -94,18 +97,18 @@ public class SeamCarver {
                     // down left good
                     if (relaxX > 0) {
                         newEnergy = distTo[relaxX][relaxY] + energyParty[relaxX - 1][relaxY + 1];
-                        if (distTo[relaxX][relaxY + 1] > newEnergy) {
-                            distTo[relaxX][relaxY + 1] = newEnergy;
-                            edgeTo[relaxX][relaxY + 1] = relaxX - 1;
+                        if (distTo[relaxX - 1][relaxY + 1] > newEnergy) {
+                            distTo[relaxX - 1][relaxY + 1] = newEnergy;
+                            edgeTo[relaxX - 1][relaxY + 1] = relaxX;
                         }
                     }
 
                     // down right good
                     if (relaxX < localCopy.width() - 1) {
                         newEnergy = distTo[relaxX][relaxY] + energyParty[relaxX + 1][relaxY + 1];
-                        if (distTo[relaxX][relaxY + 1] > newEnergy) {
-                            distTo[relaxX][relaxY + 1] = newEnergy;
-                            edgeTo[relaxX][relaxY + 1] = relaxX + 1;
+                        if (distTo[relaxX + 1][relaxY + 1] > newEnergy) {
+                            distTo[relaxX + 1][relaxY + 1] = newEnergy;
+                            edgeTo[relaxX + 1][relaxY + 1] = relaxX;
                         }
                     }
 
@@ -114,45 +117,40 @@ public class SeamCarver {
         }
 
         // virtual source to determine lowest energy route
-        int source = Integer.MAX_VALUE;
+        int sink = Integer.MAX_VALUE;
         double lowestTotalEnergy = Double.POSITIVE_INFINITY;
 
         for (int i = 0; i < localCopy.width(); i++) {
             double challenger = distTo[i][localCopy.height() - 1];
             if (challenger < lowestTotalEnergy) {
                 lowestTotalEnergy = challenger;
-                source = i;
+                sink = i;
             }
         }
 
-        if (source < localCopy.width()) {
+        if (sink < localCopy.width()) {
             int[] seam = new int[height()];
 
-            seam[0] = source;
-            // go forwards
-            for (int i = 1; i < localCopy.height(); i++) {
-                seam[i] = edgeTo[source][i];
+            // go backwards
+            for (int i = localCopy.height() - 1; i >= 0; i--) {
+
+                seam[i] = sink;
+                sink = edgeTo[sink][i];
             }
 
             return seam;
         }
         // no seam found
-        return null;
+        return new int[]{};
     }                 // sequence of indices for vertical seam
 
     public void removeHorizontalSeam(int[] seam) {
         checkRemoveOnOne(height(), "not tall enough to cut");
         checkNull(seam);
-        //    check if all vars are in X,Y
-        if (seam.length != width()) throw new IllegalArgumentException("too many args");
-        for (int x : seam) {
-            checkAllowableDimension(x, height(), "not in allowable column");
-        }
-
-        // transpose and call removeVerticalSeam
-        //    TODO: check length and seam where adjacent entries differ > 1
-        // TODO: recalculate energy along the seam
-
+        transpose();
+        removeVerticalSeam(seam);
+        transpose();
+        updateEnergy();
     }   // remove horizontal seam from current picture
 
     public void removeVerticalSeam(int[] seam) {
@@ -166,14 +164,20 @@ public class SeamCarver {
         }
 
         Picture placeHolder = new Picture(localCopy.width() - 1, localCopy.height());
-        for (int x = 0; x < placeHolder.width(); x++) {
-            for (int j = 0; j < placeHolder.height(); j++) {
-                if (j != seam[j]) placeHolder.set(x, j, localCopy.get(x, j));
+        // need separate counter because we're slicing a varying value out of the photo
+        int actualPixel = 0;
+        for (int row = 0; row < localCopy.height(); row++) {
+            for (int col = 0; col < localCopy.width(); col++) {
+                if (col != seam[row]) {
+                    placeHolder.set(actualPixel, row, localCopy.get(col, row));
+                    actualPixel++;
+                }
             }
+            actualPixel = 0;
         }
 
         localCopy = placeHolder;
-        // TODO: recalculate energy along the seam
+        // recalculate energy along the seam
         updateEnergy();
     }    // remove vertical seam from current picture
 
