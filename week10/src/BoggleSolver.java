@@ -5,12 +5,11 @@ import edu.princeton.cs.algs4.TST;
 import java.util.Set;
 import java.util.TreeSet;
 
-
 public class BoggleSolver {
 
     private static final int MAX_STRING_LENGTH = 8;
     private static final int MIN_VALID_STRING = 3;
-    private TST<Integer> dictionaryTrie;
+    private final TST<Integer> dictionaryTrie;
     private final int[] scores = new int[9];
 
     // Initializes the data structure using the given array of strings as the dictionary.
@@ -59,7 +58,7 @@ public class BoggleSolver {
         if (visited[i][j]) return;
 
         char letter = board.getLetter(i, j);
-        s += letter == 'Q' ? "qu" : letter;
+        s += letter == 'Q' ? "QU" : letter;
         visited[i][j] = true;
 
         // check if word is eligible and exists in dictionary
@@ -109,6 +108,7 @@ public class BoggleSolver {
                 }
             }
         }
+        visited[i][j] = false;
     }
 
     // Returns the score of the given word if it is in the dictionary, zero otherwise.
