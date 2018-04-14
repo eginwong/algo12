@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
 public class CircularSuffixArray {
-    private Integer[] csa;
+    private final Integer[] csa;
 
     public CircularSuffixArray(String s) {
-        if (s == null || s.length() == 0) throw new IllegalArgumentException();
+        if (s == null) throw new IllegalArgumentException();
         csa = new Integer[s.length()];
 
         for (int i = 0; i < csa.length; i++) {
@@ -41,16 +41,11 @@ public class CircularSuffixArray {
     }                    // length of s
 
     public int index(int i) {
-        if (i >= csa.length) throw new IllegalArgumentException();
+        if (i >= csa.length || i < 0) throw new IllegalArgumentException();
         return csa[i];
     }                // returns index of ith sorted suffix
 
     public static void main(String[] args) {
-        CircularSuffixArray csa = new CircularSuffixArray("AAA\n");
-        for (int i = 0; i < csa.length(); i++ ) System.out.println(csa.index(i) );
-        System.out.println();
-        csa = new CircularSuffixArray("ABRACADABRA!");
-        for (int i = 0; i < csa.length(); i++ ) System.out.println(csa.index(i) );
         //    empty
     }  // unit testing (required)
 }
